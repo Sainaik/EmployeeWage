@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EmployeeWage;
+using System;
+using System.Collections.Generic;
 
 namespace Employee_Wage_calc_Problem
 {
@@ -9,15 +11,17 @@ namespace Employee_Wage_calc_Problem
         const int IS_FULL_TIME = 1;
         const int IS_PART_TIME = 2;
 
+
         public static int CalculateWage(String comp_name, int wage_per_hour, int total_working_days, int total_working_hours)
         {
             Random rand = new Random();
 
-            //variable
+            //variables
 
             int numberOfHours = 0;
             int workingDays = 1;
-            int total_wage = 0;
+            int totalWage = 0;
+
 
             // run till the number of hours or workingdays reached in respective company
 
@@ -50,25 +54,43 @@ namespace Employee_Wage_calc_Problem
                 Console.Out.WriteLine(comp_name + " Day " + workingDays + " hours " + hours);
 
                 workingDays++;
-
             }
 
-            total_wage = numberOfHours * wage_per_hour;
+            totalWage = numberOfHours * wage_per_hour;
 
-            return total_wage;
+            return totalWage;
         }
         static void Main(string[] args)
         {
 
             int total_wage = 0;
 
-            total_wage = CalculateWage("Apple", 150, 20, 150);
+            Dictionary<Company, int> companies = new Dictionary<Company, int>();
 
-            Console.Out.WriteLine("Apple's Total wage of the month  :" + total_wage);
+            Company apple = new Company("Apple", 150, 20, 100);
 
-            total_wage = CalculateWage("Google", 125, 22, 150);
+            total_wage = CalculateWage(apple.comp_name, apple.wage_per_hour, apple.total_working_days, apple.total_working_hours);
 
-            Console.Out.WriteLine("Google's Total wage of the month :" + total_wage);
+            //apple.total_salary = total_wage;
+
+            //Console.WriteLine(apple.comp_name + "'s Wage : " + apple.total_salary);
+
+            companies.Add(apple, total_wage);
+
+            Company google = new Company("Google", 125, 22, 125);
+
+            total_wage = CalculateWage(google.comp_name, google.wage_per_hour, google.total_working_days, google.total_working_hours);
+
+            //google.total_salary = total_wage;
+
+            //Console.WriteLine(google.comp_name + "'s Wage : " + google.total_salary);
+
+            companies.Add(google, total_wage);
+
+            foreach (KeyValuePair<Company, int> comp in companies)
+            {
+                Console.WriteLine(comp.Key.comp_name + "'s Wage : " + comp.Value);
+            }
 
         }
     }
