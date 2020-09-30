@@ -12,85 +12,46 @@ namespace Employee_Wage_calc_Problem
         const int IS_PART_TIME = 2;
 
 
-        public static int CalculateWage(String comp_name, int wage_per_hour, int total_working_days, int total_working_hours)
-        {
-            Random rand = new Random();
-
-            //variables
-
-            int numberOfHours = 0;
-            int workingDays = 1;
-            int totalWage = 0;
-
-
-            // run till the number of hours or workingdays reached in respective company
-
-            while (numberOfHours <= total_working_hours && workingDays <= total_working_days)
-            {
-
-                int type = rand.Next(0, 3);
-                int hours = 0;
-
-                // switch to type of Employee
-
-                switch (type)
-                {
-                    case IS_FULL_TIME:
-                        hours = 8;
-                        break;
-                    case IS_PART_TIME:
-                        hours = 4;
-                        break;
-                    default:
-                        hours = 0;
-                        break;
-
-                }
-
-                // add the hours to total hrs
-
-                numberOfHours += hours;
-
-                Console.Out.WriteLine(comp_name + " Day " + workingDays + " hours " + hours);
-
-                workingDays++;
-            }
-
-            totalWage = numberOfHours * wage_per_hour;
-
-            return totalWage;
-        }
         static void Main(string[] args)
         {
+            //
+            Double empRatePerHour = 0;
+            Double workingHrs = 0;
+            Double numOfWorkingDays = 0;
 
-            int total_wage = 0;
+            Random random = new Random();
+            int empType = random.Next(1, 3);
 
-            Dictionary<Company, int> companies = new Dictionary<Company, int>();
-
-            Company apple = new Company("Apple", 150, 20, 100);
-
-            total_wage = CalculateWage(apple.comp_name, apple.wage_per_hour, apple.total_working_days, apple.total_working_hours);
-
-            //apple.total_salary = total_wage;
-
-            //Console.WriteLine(apple.comp_name + "'s Wage : " + apple.total_salary);
-
-            companies.Add(apple, total_wage);
-
-            Company google = new Company("Google", 125, 22, 125);
-
-            total_wage = CalculateWage(google.comp_name, google.wage_per_hour, google.total_working_days, google.total_working_hours);
-
-            //google.total_salary = total_wage;
-
-            //Console.WriteLine(google.comp_name + "'s Wage : " + google.total_salary);
-
-            companies.Add(google, total_wage);
-
-            foreach (KeyValuePair<Company, int> comp in companies)
+            switch (empType)
             {
-                Console.WriteLine(comp.Key.comp_name + "'s Wage : " + comp.Value);
+                case IS_FULL_TIME:
+
+                   empRatePerHour = 120;
+                   workingHrs = 8;
+                   numOfWorkingDays = 20;
+
+                    Console.WriteLine("Full Time Employee Details in following companies");
+                    break;
+
+                case IS_PART_TIME:
+
+                    empRatePerHour = 80;
+                    workingHrs = 5;
+                    numOfWorkingDays = 20;
+                    Console.WriteLine("Part Time Employee Details in following companies");
+                    break;
+
+                default:
+                    break;
             }
+
+            EmpWageBuilder apple = new EmpWageBuilder();
+            apple.addCompanyWage("Apple", empRatePerHour, numOfWorkingDays, workingHrs);
+            Console.WriteLine("Total wage in Apple: " + apple.getTotalWage("Apple"));
+
+            EmpWageBuilder google = new EmpWageBuilder();
+            google.addCompanyWage("Google", 10, 20, 12);
+            Console.WriteLine("Total wage in google : " + google.getTotalWage("Google"));
 
         }
     }
