@@ -14,7 +14,7 @@ namespace Employee_Wage_calc_Problem
 
         static void Main(string[] args)
         {
-            //
+            //Variables
             Double empRatePerHour = 0;
             Double workingHrs = 0;
             Double numOfWorkingDays = 0;
@@ -50,7 +50,7 @@ namespace Employee_Wage_calc_Problem
             Console.WriteLine("Total wage in Apple: " + apple.getTotalWage("Apple"));
 
             EmpWageBuilder google = new EmpWageBuilder();
-            google.addCompanyWage("Google", 10, 20, 12);
+            google.addCompanyWage("Google", empRatePerHour, numOfWorkingDays, workingHrs);
             Console.WriteLine("Total wage in google : " + google.getTotalWage("Google"));
 
         }

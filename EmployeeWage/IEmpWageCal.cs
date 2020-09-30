@@ -6,10 +6,11 @@ namespace EmployeeWage
 {
     interface IEmpWageCal
     { 
-       public void addCompanyWage(String company, Double empRatePerHour, Double numOfWorkingDays, Double workingHrs);
+        public void addCompanyWage(String company, Double empRatePerHour, Double numOfWorkingDays, Double workingHrs);
 
-       public Double getTotalWage(string company);
-        
+        public Double getTotalWage(string company);
+
+        public Double getDailtWage(string company);
     }
 }
 
