@@ -7,8 +7,6 @@ namespace Employee_Wage_calc_Problem
     class Program
     {
 
-
-
         static void Main(string[] args)
         {
 
@@ -46,6 +44,8 @@ namespace Employee_Wage_calc_Problem
                 Console.Out.WriteLine("\n**************************************\n");
 
             }
+
+
 
         }
     }

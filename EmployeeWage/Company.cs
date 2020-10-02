@@ -8,6 +8,9 @@ namespace EmployeeWage
     {
         //getters and setters for the instance variables
 
+        //to add daiky wage
+        public List<Double> DailyWage = new List<double>();
+
         public String CompName { get; set; }
         public double WagePerHour { get; set; }
         public int TotalWorkingDays { get; set; }
@@ -30,3 +33,12 @@ namespace EmployeeWage
         }
     }
 }
+
+
+
+
+
+
+
+
+
