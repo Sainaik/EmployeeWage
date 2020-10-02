@@ -29,10 +29,6 @@ namespace Employee_Wage_calc_Problem
                 Console.WriteLine("1. Add Company and Caluclate Wage\n2.Exit");
                 int choose = Convert.ToInt32(Console.ReadLine());
 
-                double empRatePerHour = 0;
-                int workingHrs = 0;
-                int numOfWorkingDays = 0;
-
                 switch (choose)
                 {
 
@@ -41,30 +37,8 @@ namespace Employee_Wage_calc_Problem
                         Random random = new Random();
                         int empType = random.Next(1, 3);
 
-                        switch (empType)
-                        {
-                            case IS_FULL_TIME:
-
-                                empRatePerHour = 120;
-                                workingHrs = 8;
-                                numOfWorkingDays = 20;
-
-                                Console.WriteLine("Full Time Employee Details in following companies");
-                                break;
-
-                            case IS_PART_TIME:
-
-                                empRatePerHour = 120;
-                                workingHrs = 100;
-                                numOfWorkingDays = 20;
-                                Console.WriteLine("Part Time Employee Details in following companies");
-                                break;
-
-                            default:
-                                break;
-                        }
-
-                        Company company = ew.AddCompany("Apple", empRatePerHour, numOfWorkingDays, workingHrs);
+                        
+                        Company company = ew.AddCompany("Apple", 120, 20, 100);
                         ew.CalculateWage(company);
 
                         company = ew.AddCompany("Google", 100, 25, 150);
