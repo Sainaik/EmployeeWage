@@ -11,19 +11,48 @@ namespace Employee_Wage_calc_Problem
 
         static void Main(string[] args)
         {
-             //public Dictionary<String, double> totalWages = new Dictionary<String, double>();
 
-          
-            EmpWageBuilder ew1 = new EmpWageBuilder("Apple", 150, 20, 100);
+            //Constants
 
-            ew1.CalculateWage();
+            const int ADDCompany = 1;
+            //const int CALCWage = 2;
 
-            Console.Out.WriteLine("\n**************************************\n");
+            EmpWageBuilder ew = new EmpWageBuilder();
 
-            EmpWageBuilder ew2 = new EmpWageBuilder("Google", 125, 22, 125);
 
-            ew2.CalculateWage();
+            
+
+            bool loop = true;
+
+            while (loop)
+            {
+                Console.WriteLine("1. Add Company and Caluclate Wage\n2.Exit"); 
+                int choose = Convert.ToInt32(Console.ReadLine());
+                
+                switch (choose)
+                {
+
+                    case ADDCompany:
+
+                        Company company = ew.AddCompany("Apple", 150, 20, 100);
+                        ew.CalculateWage(company);
+
+                        company = ew.AddCompany("Google", 100, 25, 150);
+                        ew.CalculateWage(company);
+                        break;
+
+                    default:
+                        loop = false;
+                        break;
+                }
+
+                Console.Out.WriteLine("\n**************************************\n");
+
+            }
+
+
         }
+           
             
 
      }

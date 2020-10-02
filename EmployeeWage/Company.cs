@@ -25,6 +25,8 @@ namespace EmployeeWage
             this.TotalWorkingHours = totalWorkingHours;
             this.MonthlyTotalWage = 0;
 
+            Console.WriteLine("\nCompany " + this.CompName + " Created\n");
+
         }
     }
 }

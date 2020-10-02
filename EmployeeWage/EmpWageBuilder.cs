@@ -13,19 +13,22 @@ namespace EmployeeWage
         const int IS_FULL_TIME = 1;
         const int IS_PART_TIME = 2;
 
-        // instance variable
-        
-        Company company;
-        
+        List<Company> listOfCompnies = new List<Company>();
 
-        
-        public EmpWageBuilder(String compName, int wagePerHour, int totalWorkingDays, int totalWork)
+        public EmpWageBuilder()
         {
-            company = new Company(compName,wagePerHour,totalWorkingDays,totalWork);
+            
+        }
+
+        public Company AddCompany(String compName, int wagePerHour, int totalWorkingDays, int totalWork)
+        {
+            Company company = new Company(compName, wagePerHour, totalWorkingDays, totalWork);
+            listOfCompnies.Add(company);
+            return company;
         }
 
 
-        public void CalculateWage()
+        public void CalculateWage(Company company)
         {
             Random rand = new Random();
 
@@ -38,7 +41,7 @@ namespace EmployeeWage
 
             // run till the number of hours or workingdays reached in respective company
 
-            while (numberOfHours <= this.company.TotalWorkingHours && workingDays <= this.company.TotalWorkingDays)
+            while (numberOfHours <= company.TotalWorkingHours && workingDays <= company.TotalWorkingDays)
             {
 
                 int type = rand.Next(0, 3);
@@ -64,18 +67,18 @@ namespace EmployeeWage
 
                 numberOfHours += hours;
 
-                Console.Out.WriteLine(this.company.CompName + " Day " + workingDays + " hours " + hours);
+                Console.Out.WriteLine(company.CompName + " Day " + workingDays + " hours " + hours);
 
                 workingDays++;
             }
 
             
 
-            totalWage = numberOfHours * this.company.WagePerHour;
+            totalWage = numberOfHours * company.WagePerHour;
 
             Console.Out.WriteLine("\nTotal Wage for the month is: "+ totalWage);
 
-            this.company.MonthlyTotalWage = totalWage;
+            company.MonthlyTotalWage = totalWage;
         }
 
     }
