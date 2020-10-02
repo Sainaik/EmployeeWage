@@ -20,7 +20,7 @@ namespace EmployeeWage
             
         }
 
-        public Company AddCompany(String compName, int wagePerHour, int totalWorkingDays, int totalWork)
+        public Company AddCompany(String compName, double wagePerHour, int totalWorkingDays, int totalWork)
         {
             Company company = new Company(compName, wagePerHour, totalWorkingDays, totalWork);
             listOfCompnies.Add(company);
@@ -36,7 +36,7 @@ namespace EmployeeWage
 
             int numberOfHours = 0;
             int workingDays = 1;
-            int totalWage = 0;
+            double totalWage = 0;
 
 
             // run till the number of hours or workingdays reached in respective company

@@ -9,15 +9,15 @@ namespace EmployeeWage
         //getters and setters for the instance variables
 
         public String CompName { get; set; }
-        public int WagePerHour { get; set; }
+        public double WagePerHour { get; set; }
         public int TotalWorkingDays { get; set; }
         public int TotalWorkingHours { get; set; }
 
-        public int MonthlyTotalWage { get; set; }
+        public double MonthlyTotalWage { get; set; }
 
 
         //company constructor
-        public Company(String compName, int wagePerHour, int totalWorkingDays, int totalWorkingHours)
+        public Company(String compName, double wagePerHour, int totalWorkingDays, int totalWorkingHours)
         {
             this.CompName = compName;
             this.WagePerHour = wagePerHour;
