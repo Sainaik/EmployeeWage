@@ -6,6 +6,7 @@ namespace Employee_Wage_calc_Problem
 {
     class Program
     {
+        //constants
 
         static void Main(string[] args)
         {
@@ -13,7 +14,7 @@ namespace Employee_Wage_calc_Problem
             //Constants
 
             const int ADDCompany = 1;
-            //const int CALCWage = 2;
+            const int GetCompWage = 2;
 
             EmpWageBuilder ew = new EmpWageBuilder();
 
@@ -21,7 +22,7 @@ namespace Employee_Wage_calc_Problem
 
             while (loop)
             {
-                Console.WriteLine("1. Add Company and Caluclate Wage\n2.Exit");
+                Console.WriteLine("1. Add Company and Caluclate Wage\n2.Get total monthly wage of a company \n3.Exit");
                 int choose = Convert.ToInt32(Console.ReadLine());
 
                 switch (choose)
@@ -34,6 +35,20 @@ namespace Employee_Wage_calc_Problem
 
                         company = ew.AddCompany("Google", 100, 25, 150);
                         ew.CalculateWage(company);
+                        break;
+                    case GetCompWage:
+
+                        Console.Out.WriteLine("Enter the company to get total wage");
+                        String name = Console.ReadLine();
+                        double monthlyWage =ew.GetTotalWage(name);
+                        if (monthlyWage > 0)
+                        {
+                            Console.Out.WriteLine(name+"'s Monthly total wage is: "+monthlyWage);
+                        }
+                        else
+                        {
+                            Console.Out.WriteLine("Invalid Company Name");
+                        }
                         break;
 
                     default:

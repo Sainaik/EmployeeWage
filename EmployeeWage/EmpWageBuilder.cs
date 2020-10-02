@@ -5,7 +5,7 @@ using System.Text;
 namespace EmployeeWage
 {
 
-    class EmpWageBuilder:IEmpWageCal
+    class EmpWageBuilder : IEmpWageCal
     {
         //constants
         const int IS_FULL_TIME = 1;
@@ -68,7 +68,7 @@ namespace EmployeeWage
                 // Adding daily wage
                 company.DailyWage.Add(hours * company.WagePerHour);
 
-                Console.Out.WriteLine(company.CompName + " Day " + workingDays + " hours " + hours+" Daily wage: "+ (hours * company.WagePerHour));
+                Console.Out.WriteLine(company.CompName + " Day " + workingDays + " hours " + hours + " Daily wage: " + (hours * company.WagePerHour));
 
                 workingDays++;
             }
@@ -78,6 +78,24 @@ namespace EmployeeWage
             Console.Out.WriteLine("\nTotal Wage for the month is: " + totalWage);
 
             company.MonthlyTotalWage = totalWage;
+        }
+
+        public double GetTotalWage(string compName)
+        {
+            double totalWage = 0;
+            
+
+            foreach(Company comp in listOfCompnies)
+            {
+                if(comp.CompName.Equals(compName))
+                {
+                    totalWage = comp.MonthlyTotalWage; 
+                }
+            }
+
+            return totalWage;
+            
+
         }
 
     }

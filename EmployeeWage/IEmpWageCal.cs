@@ -8,7 +8,7 @@ namespace EmployeeWage
     {
         Company AddCompany(String company, Double empRatePerHour, int numOfWorkingDays, int workingHrs);
 
-        // Double getTotalWage(string company);
+        Double GetTotalWage(String companyName);
 
     }
 }

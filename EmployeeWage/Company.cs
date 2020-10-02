@@ -8,7 +8,7 @@ namespace EmployeeWage
     {
         //getters and setters for the instance variables
 
-        //to add daiky wage
+        //List to store Daoly wage
         public List<Double> DailyWage = new List<double>();
 
         public String CompName { get; set; }
@@ -33,12 +33,3 @@ namespace EmployeeWage
         }
     }
 }
-
-
-
-
-
-
-
-
-
