@@ -8,50 +8,59 @@ namespace Employee_Wage_calc_Problem
     {
         //constants
 
-        const int IS_FULL_TIME = 1;
-        const int IS_PART_TIME = 2;
-
-
         static void Main(string[] args)
         {
-            //Variables
-            Double empRatePerHour = 0;
-            Double workingHrs = 0;
-            Double numOfWorkingDays = 0;
 
-            Random random = new Random();
-            int empType = random.Next(1, 3);
+            //Constants
 
-            switch (empType)
+            const int ADDCompany = 1;
+            const int GetCompWage = 2;
+
+            EmpWageBuilder ew = new EmpWageBuilder();
+
+            bool loop = true;
+
+            while (loop)
             {
-                case IS_FULL_TIME:
+                Console.WriteLine("1. Add Company and Caluclate Wage\n2.Get total monthly wage of a company \n3.Exit");
+                int choose = Convert.ToInt32(Console.ReadLine());
 
-                   empRatePerHour = 120;
-                   workingHrs = 8;
-                   numOfWorkingDays = 20;
+                switch (choose)
+                {
 
-                    Console.WriteLine("Full Time Employee Details in following companies");
-                    break;
+                    case ADDCompany:
 
-                case IS_PART_TIME:
+                        Company company = ew.AddCompany("Apple", 120, 20, 100);
+                        ew.CalculateWage(company);
 
-                    empRatePerHour = 80;
-                    workingHrs = 5;
-                    numOfWorkingDays = 20;
-                    Console.WriteLine("Part Time Employee Details in following companies");
-                    break;
+                        company = ew.AddCompany("Google", 100, 25, 150);
+                        ew.CalculateWage(company);
+                        break;
+                    case GetCompWage:
 
-                default:
-                    break;
+                        Console.Out.WriteLine("Enter the company to get total wage");
+                        String name = Console.ReadLine();
+                        double monthlyWage =ew.GetTotalWage(name);
+                        if (monthlyWage > 0)
+                        {
+                            Console.Out.WriteLine(name+"'s Monthly total wage is: "+monthlyWage);
+                        }
+                        else
+                        {
+                            Console.Out.WriteLine("Invalid Company Name");
+                        }
+                        break;
+
+                    default:
+                        loop = false;
+                        break;
+                }
+
+                Console.Out.WriteLine("\n**************************************\n");
+
             }
 
-            EmpWageBuilder apple = new EmpWageBuilder();
-            apple.addCompanyWage("Apple", empRatePerHour, numOfWorkingDays, workingHrs);
-            Console.WriteLine("Total wage in Apple: " + apple.getTotalWage("Apple"));
 
-            EmpWageBuilder google = new EmpWageBuilder();
-            google.addCompanyWage("Google", empRatePerHour, numOfWorkingDays, workingHrs);
-            Console.WriteLine("Total wage in google : " + google.getTotalWage("Google"));
 
         }
     }
