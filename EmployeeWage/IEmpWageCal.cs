@@ -5,11 +5,10 @@ using System.Text;
 namespace EmployeeWage
 {
     interface IEmpWageCal
-    { 
-       Company AddCompany(String company, Double empRatePerHour, int numOfWorkingDays, int workingHrs);
+    {
+        Company AddCompany(String company, Double empRatePerHour, int numOfWorkingDays, int workingHrs);
 
-      // Double getTotalWage(string company);
-        
+        // Double getTotalWage(string company);
+
     }
 }
-

@@ -5,7 +5,7 @@ using System.Text;
 namespace EmployeeWage
 {
 
-    class EmpWageBuilder:IEmpWageCal
+    class EmpWageBuilder : IEmpWageCal
     {
         //constants
         const int IS_FULL_TIME = 1;
@@ -81,6 +81,3 @@ namespace EmployeeWage
 
     }
 }
-
-
-

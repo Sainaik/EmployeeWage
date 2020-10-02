@@ -31,10 +31,6 @@ namespace Employee_Wage_calc_Problem
 
                     case ADDCompany:
 
-                        Random random = new Random();
-                        int empType = random.Next(1, 3);
-
-                        
                         Company company = ew.AddCompany("Apple", 120, 20, 100);
                         ew.CalculateWage(company);
 
@@ -51,11 +47,6 @@ namespace Employee_Wage_calc_Problem
 
             }
 
-
-
         }
     }
 }
-
-
-
