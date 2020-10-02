@@ -19,22 +19,23 @@ namespace Employee_Wage_calc_Problem
 
             EmpWageBuilder ew = new EmpWageBuilder();
 
-
-            
-
             bool loop = true;
 
             while (loop)
             {
-                Console.WriteLine("1. Add Company and Caluclate Wage\n2.Exit"); 
+                Console.WriteLine("1. Add Company and Caluclate Wage\n2.Exit");
                 int choose = Convert.ToInt32(Console.ReadLine());
-                
+
                 switch (choose)
                 {
 
                     case ADDCompany:
 
-                        Company company = ew.AddCompany("Apple", 150, 20, 100);
+                        Random random = new Random();
+                        int empType = random.Next(1, 3);
+
+                        
+                        Company company = ew.AddCompany("Apple", 120, 20, 100);
                         ew.CalculateWage(company);
 
                         company = ew.AddCompany("Google", 100, 25, 150);
@@ -51,12 +52,10 @@ namespace Employee_Wage_calc_Problem
             }
 
 
+
         }
-           
-            
-
-     }
-
-        
+    }
 }
+
+
 

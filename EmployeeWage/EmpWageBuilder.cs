@@ -5,9 +5,7 @@ using System.Text;
 namespace EmployeeWage
 {
 
-    
-
-    class EmpWageBuilder
+    class EmpWageBuilder:IEmpWageCal
     {
         //constants
         const int IS_FULL_TIME = 1;
@@ -17,12 +15,12 @@ namespace EmployeeWage
 
         public EmpWageBuilder()
         {
-            
+
         }
 
-        public Company AddCompany(String compName, double wagePerHour, int totalWorkingDays, int totalWork)
+        public Company AddCompany(String compName, double wagePerHour, int totalWorkingDays, int totalWorkHours)
         {
-            Company company = new Company(compName, wagePerHour, totalWorkingDays, totalWork);
+            Company company = new Company(compName, wagePerHour, totalWorkingDays, totalWorkHours);
             listOfCompnies.Add(company);
             return company;
         }
@@ -72,14 +70,17 @@ namespace EmployeeWage
                 workingDays++;
             }
 
-            
+
 
             totalWage = numberOfHours * company.WagePerHour;
 
-            Console.Out.WriteLine("\nTotal Wage for the month is: "+ totalWage);
+            Console.Out.WriteLine("\nTotal Wage for the month is: " + totalWage);
 
             company.MonthlyTotalWage = totalWage;
         }
 
     }
 }
+
+
+
