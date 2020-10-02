@@ -14,44 +14,71 @@ namespace Employee_Wage_calc_Problem
 
         static void Main(string[] args)
         {
-            //
-            Double empRatePerHour = 0;
-            Double workingHrs = 0;
-            Double numOfWorkingDays = 0;
 
-            Random random = new Random();
-            int empType = random.Next(1, 3);
+            //Constants
 
-            switch (empType)
+            const int ADDCompany = 1;
+            //const int CALCWage = 2;
+
+            EmpWageBuilder ew = new EmpWageBuilder();
+
+            bool loop = true;
+
+            while (loop)
             {
-                case IS_FULL_TIME:
+                Console.WriteLine("1. Add Company and Caluclate Wage\n2.Exit");
+                int choose = Convert.ToInt32(Console.ReadLine());
 
-                   empRatePerHour = 120;
-                   workingHrs = 8;
-                   numOfWorkingDays = 20;
+                double empRatePerHour = 0;
+                int workingHrs = 0;
+                int numOfWorkingDays = 0;
 
-                    Console.WriteLine("Full Time Employee Details in following companies");
-                    break;
+                switch (choose)
+                {
 
-                case IS_PART_TIME:
+                    case ADDCompany:
 
-                    empRatePerHour = 80;
-                    workingHrs = 5;
-                    numOfWorkingDays = 20;
-                    Console.WriteLine("Part Time Employee Details in following companies");
-                    break;
+                        Random random = new Random();
+                        int empType = random.Next(1, 3);
 
-                default:
-                    break;
+                        switch (empType)
+                        {
+                            case IS_FULL_TIME:
+
+                                empRatePerHour = 120;
+                                workingHrs = 8;
+                                numOfWorkingDays = 20;
+
+                                Console.WriteLine("Full Time Employee Details in following companies");
+                                break;
+
+                            case IS_PART_TIME:
+
+                                empRatePerHour = 120;
+                                workingHrs = 100;
+                                numOfWorkingDays = 20;
+                                Console.WriteLine("Part Time Employee Details in following companies");
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        Company company = ew.AddCompany("Apple", empRatePerHour, numOfWorkingDays, workingHrs);
+                        ew.CalculateWage(company);
+
+                        company = ew.AddCompany("Google", 100, 25, 150);
+                        ew.CalculateWage(company);
+                        break;
+
+                    default:
+                        loop = false;
+                        break;
+                }
+
+                Console.Out.WriteLine("\n**************************************\n");
+
             }
-
-            EmpWageBuilder apple = new EmpWageBuilder();
-            apple.addCompanyWage("Apple", empRatePerHour, numOfWorkingDays, workingHrs);
-            Console.WriteLine("Total wage in Apple: " + apple.getTotalWage("Apple"));
-
-            EmpWageBuilder google = new EmpWageBuilder();
-            google.addCompanyWage("Google", 10, 20, 12);
-            Console.WriteLine("Total wage in google : " + google.getTotalWage("Google"));
 
         }
     }
